@@ -303,96 +303,131 @@ footer {
 }
 
 /* ==========================================================================
-   7. Responzivita (Mobilná optimalizácia)
+   7. Kompletne prerobená responzivita (Oprava behania do strán)
    ========================================================================== */
+
+/* Globálna poistka pre prehliadač */
+html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 @media (max-width: 768px) {
+    /* 1. Reset kontajnerov */
+    .container {
+        padding: 0 15px !important;
+        overflow: hidden;
+    }
+
+    /* 2. Hero Sekcia */
     .hero-full {
-        height: auto;
-        padding: 60px 0;
+        height: auto !important;
+        min-height: 450px !important;
+        padding: 40px 0 !important;
     }
 
     .glow-text { 
-        font-size: 2.2rem; 
-        word-wrap: break-word;
+        font-size: 2.2rem !important; 
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
     }
     
     .hero-sub { 
-        font-size: 1rem; 
-    }
-
-    .hero-phone-box {
-        padding: 12px 20px;
-        width: 100%;
-        max-width: 290px;
-    }
-
-    .main-number { 
-        font-size: 1.4rem; 
-    }
-    
-    .hero-btns {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
+        font-size: 1rem !important; 
         padding: 0 10px;
     }
 
+    .hero-phone-box {
+        padding: 12px 20px !important;
+        width: 100% !important;
+        max-width: 280px !important;
+        box-sizing: border-box !important;
+    }
+
+    .main-number { 
+        font-size: 1.4rem !important; 
+    }
+    
+    .hero-btns {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
     .hero-btns .btn { 
-        width: 100%; 
-        max-width: 300px; 
-        margin: 8px 0; 
-        padding: 15px 20px; 
-        box-sizing: border-box; 
-        text-align: center;
+        width: 100% !important; 
+        max-width: 280px !important; 
+        margin: 8px 0 !important; 
+        padding: 15px 10px !important; 
+        box-sizing: border-box !important; 
+        text-align: center !important;
     }
 
-    .btn-primary, .btn-secondary {
-        width: 100%;
-        text-align: center;
-        margin-left: 0;
-        margin-top: 15px;
+    /* 3. Služby (Grid oprava) */
+    .services {
+        padding: 60px 0 !important;
+    }
+    .services-grid {
+        grid-template-columns: 1fr !important; /* Natvrdo jeden stĺpec */
+        gap: 20px !important;
+    }
+    .card {
+        padding: 30px 20px !important;
     }
 
+    /* 4. Reminder (KĽÚČOVÁ OPRAVA - tu to najviac pretekalo) */
+    .reminder-section {
+        padding: 30px 0 !important;
+    }
     .reminder-card { 
-        text-align: center; 
-        padding: 30px 20px;
+        padding: 30px 15px !important;
+        flex-direction: column !important; /* Prvky pod seba */
+        align-items: stretch !important;
+        text-align: center !important;
+        border-radius: 15px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
-
-    .reminder-form {
-        width: 100%;
+    .reminder-text, .reminder-form {
+        width: 100% !important;
+        min-width: 100% !important; /* Zrušenie pôvodných 300px */
+        margin-top: 15px !important;
     }
-}
-/* ==========================================================================
-   RADIKÁLNA STOPKA PRE POSÚVANIE DO STRÁN (OVERFLOW FIX)
-   ========================================================================= */
-
-/* 1. Poistka pre celú stránku a jej hlavné obaly */
-html, body {
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-    position: relative;
-}
-
-/* 2. Oprava pre formulár pripomienky (inputs často pretláčajú mobil) */
-@media (max-width: 768px) {
     .reminder-form input {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
     }
-    
-    .reminder-card {
+
+    /* 5. Trust Info (Oprava flexu) */
+    .trust-grid {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    .trust-item {
+        padding: 10px 0 !important;
         width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        overflow: hidden; /* Zachytí pretekajúci obsah vnútri karty */
+    }
+
+    /* 6. Footer */
+    footer {
+        padding: 40px 0 20px !important;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
     }
 }
 
-/* 3. Globálny vyhadzovač chýb (Zúži všetky elementy na mobile) */
-@media (max-width: 480px) {
-    * {
-        max-width: 100% !important;
-    }
+/* Poistka pre extrémne malé mobily (iPhone SE a pod.) */
+@media (max-width: 360px) {
+    .glow-text { font-size: 1.8rem !important; }
+    .main-number { font-size: 1.2rem !important; }
 }
