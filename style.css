@@ -363,3 +363,36 @@ footer {
         width: 100%;
     }
 }
+/* ==========================================================================
+   RADIKÁLNA STOPKA PRE POSÚVANIE DO STRÁN (OVERFLOW FIX)
+   ========================================================================= */
+
+/* 1. Poistka pre celú stránku a jej hlavné obaly */
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    position: relative;
+}
+
+/* 2. Oprava pre formulár pripomienky (inputs často pretláčajú mobil) */
+@media (max-width: 768px) {
+    .reminder-form input {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .reminder-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden; /* Zachytí pretekajúci obsah vnútri karty */
+    }
+}
+
+/* 3. Globálny vyhadzovač chýb (Zúži všetky elementy na mobile) */
+@media (max-width: 480px) {
+    * {
+        max-width: 100% !important;
+    }
+}
